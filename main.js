@@ -66,7 +66,6 @@ searchForm.addEventListener("submit", (event) => {
   fetchInfo(searchParameter, userSelect, userInput)
     .then((object) => {
       displayInfo(object);
-
       searchForm.reset();
     })
     .catch((error) => {
@@ -87,9 +86,8 @@ searchForm.addEventListener("submit", (event) => {
 sideSearchForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const multiSearch = document.querySelector("#multi-search").value;
-  fetchInfo(event.target.id, multiSearch).then((response) => {
-    console.log(response);
-    displayInfo(response);
+  fetchInfo(event.target.id, multiSearch).then((object) => {
+    displayInfo(object);
     sideSearchForm.reset();
   });
 });

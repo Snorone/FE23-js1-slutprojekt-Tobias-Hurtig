@@ -65,11 +65,8 @@ searchForm.addEventListener("submit", (event) => {
   const userInput = document.querySelector("input").value;
   fetchInfo(searchParameter, userSelect, userInput)
     .then((object) => {
-      if (userSelect == "movie") {
-        displayInfo(object);
-      } else {
-        displayInfo(object);
-      }
+      displayInfo(object);
+
       searchForm.reset();
     })
     .catch((error) => {

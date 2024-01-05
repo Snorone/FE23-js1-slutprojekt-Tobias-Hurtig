@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link href="./css/style.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script src="./lib/anime.min.js" defer></script>
+    <script type="module" src="./main.js"></script>
+
+    <script
+      src="https://kit.fontawesome.com/2db5c10a73.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="shortcut icon" href="#" />
+    <title>Movie data base</title>
+  </head>
+  <body>
+    <header>
+      <div class="left-header-div">
+        <img class="img-class" src="assets/tmdbLogo1.png" alt="TMDBlogo" />
+      </div>
+
+      <h1 class="header-h1">Tobbes Movie Data Base</h1>
+
+      <form>
+        <label for="movie-person">Search by movie or person:</label>
+        <select id="movie-person" name="movie-person">
+          <option value="movie">Movie</option>
+          <option id="person" value="person">Person</option>
+        </select>
+        <input type="text" placeholder="Movie/person" />
+        <button>Search</button>
+      </form>
+    </header>
+    <div class="main">
+      <div class="sidebar">
+        <div class="button-div">
+          <h3>Top 10 movies list</h3>
+
+          <button id="top-rated-btn" class="button-43" role="button">
+            Top Rated
+          </button>
+
+          <button id="popular-btn" class="button-43" role="button">
+            Most Popular
+          </button>
+
+          <h3>Top 10 TV list</h3>
+          <button id="top-rated-tv-btn" class="button-43" role="button">
+            Top Rated
+          </button>
+          <button id="popular-tv-btn" class="button-43" role="button">
+            Most Popular
+          </button>
+        </div>
+        <form id="side-form">
+          <input
+            type="text"
+            id="multi-search"
+            placeholder="search anything"
+            size="10"
+          />
+          <button>Search</button>
+        </form>
+      </div>
+
+      <section>
+        <div class="start-image">
+          <img
+            class="img-class"
+            src="./assets/tmdb.png"
+            alt="image with popcorn and other moviestuff"
+          />
+        </div>
+      </section>
+    </div>
+    <footer>
+      <div>
+        Tobbe.hurtig@sprntrl.com
+        <div class="mini-text">Sk&aring;ne, Malm&ouml;</div>
+      </div>
+      <ul>
+        <li class="linkedin">
+          <a href="#" target="_blank"
+            ><i class="fa-brands fa-linkedin fa-2xl"></i
+          ></a>
+        </li>
+        <li class="twitter">
+          <a href="#" target="_blank"
+            ><i class="fa-brands fa-twitter fa-2xl"></i
+          ></a>
+        </li>
+        <li class="facebook">
+          <a href="#" target="_blank"
+            ><i class="fa-brands fa-square-facebook fa-2xl"></i
+          ></a>
+        </li>
+        <li class="youtube">
+          <a href="#" target="_blank"
+            ><i class="fa-brands fa-youtube fa-2xl"></i
+          ></a>
+        </li>
+      </ul>
+      <div>Last updated 24-01-05</div>
+    </footer>
+  </body>
+</html>

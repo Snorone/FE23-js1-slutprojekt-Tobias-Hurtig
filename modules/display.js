@@ -43,7 +43,6 @@ export function displayTopTen(movieObjects) {
 }
 
 export function displayInfo(movieObject) {
-  console.log(movieObject.results);
   movieObject.results.sort(sortResults);
   const sectionDiv = document.querySelector("section");
 

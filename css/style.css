@@ -5,7 +5,6 @@
   box-sizing: border-box;
 }
 header {
-  box-sizing: ;
   display: flex;
   justify-content: space-between;
   padding: 0.4rem;
@@ -21,8 +20,6 @@ header {
 }
 .left-header-div {
   width: 10vw;
-  /* max-width: 250px; */
-  /* padding: 1vw; */
 }
 form {
   width: 20vw;

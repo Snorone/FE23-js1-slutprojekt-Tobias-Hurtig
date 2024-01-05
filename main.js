@@ -23,39 +23,39 @@ const logoDiv = document.querySelector(".left-header-div");
 
 buttonDiv.addEventListener("click", (event) => {
   event.preventDefault();
-
-  fetchInfo(event.target.id)
-    .then((object) => {
-      if (event.target.id == "top-rated-tv-btn") {
-        topRatedTvButtonAnimationObject.restart();
-        displayTopTen(object);
-      } else if (event.target.id == "top-rated-btn") {
-        topRatedButtonAnimationObject.restart();
-        displayTopTen(object);
-      } else if (event.target.id == "popular-btn") {
-        popButtonAnimationObject.restart();
-        displayTopTen(object);
-      } else if (event.target.id == "popular-tv-btn") {
-        popTvButtonAnimationObject.restart();
-        displayTopTen(object);
-      } else {
-        location.reload();
-      }
-    })
-    .catch((error) => {
-      const sectionDiv = document.querySelector("section");
-      const h2El = document.createElement("h2");
-      const imgDiv = document.createElement("div");
-      imgDiv.className = "error-image";
-      h2El.innerText = "Something went wrong";
-      const imgEl = document.createElement("img");
-      imgEl.src = "assets/error.png";
-      imgEl.className = "img-class";
-      sectionDiv.append(imgDiv);
-      imgDiv.append(h2El);
-      imgDiv.append(imgEl);
-      console.log(error);
-    });
+  if (event.target.id != "")
+    fetchInfo(event.target.id)
+      .then((object) => {
+        if (event.target.id == "top-rated-tv-btn") {
+          topRatedTvButtonAnimationObject.restart();
+          displayTopTen(object);
+        } else if (event.target.id == "top-rated-btn") {
+          topRatedButtonAnimationObject.restart();
+          displayTopTen(object);
+        } else if (event.target.id == "popular-btn") {
+          popButtonAnimationObject.restart();
+          displayTopTen(object);
+        } else if (event.target.id == "popular-tv-btn") {
+          popTvButtonAnimationObject.restart();
+          displayTopTen(object);
+        } else {
+          location.reload();
+        }
+      })
+      .catch((error) => {
+        const sectionDiv = document.querySelector("section");
+        const h2El = document.createElement("h2");
+        const imgDiv = document.createElement("div");
+        imgDiv.className = "error-image";
+        h2El.innerText = "Something went wrong";
+        const imgEl = document.createElement("img");
+        imgEl.src = "assets/error.png";
+        imgEl.className = "img-class";
+        sectionDiv.append(imgDiv);
+        imgDiv.append(h2El);
+        imgDiv.append(imgEl);
+        console.log(error);
+      });
 });
 
 searchForm.addEventListener("submit", (event) => {

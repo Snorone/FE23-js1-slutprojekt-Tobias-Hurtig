@@ -131,3 +131,29 @@ function createAndAppendElement(type, content, container) {
     el.className = "img-class";
   } else el.innerText = content;
 }
+
+export function displayError(error) {
+  const sectionDiv = document.querySelector("section");
+  sectionDiv.innerHTML = "";
+  const h2El = document.createElement("h2");
+  const imgDiv = document.createElement("div");
+  const imgEl = document.createElement("img");
+  imgEl.src = "./assets/error.png";
+  imgEl.className = "img-class";
+  imgDiv.className = "error-image";
+  if (
+    error === "Movie Not Found" ||
+    error === "Actor Not Found" ||
+    error === "Nothing matches your search"
+  ) {
+    h2El.innerText = error + ". Please try again.";
+    sectionDiv.append(imgDiv);
+    imgDiv.append(h2El);
+    imgDiv.append(imgEl);
+  } else {
+    h2El.innerText = "something went wrong. Please try again";
+    sectionDiv.append(imgDiv);
+    imgDiv.append(h2El);
+    imgDiv.append(imgEl);
+  }
+}

@@ -15,6 +15,7 @@ import { popButtonAnimationObject } from "./modules/animations.js";
 import { popTvButtonAnimationObject } from "./modules/animations.js";
 import { topRatedTvButtonAnimationObject } from "./modules/animations.js";
 import { displayInfo } from "./modules/display.js";
+import { displayError } from "./modules/display.js";
 
 const buttonDiv = document.querySelector(".button-div");
 const searchForm = document.querySelector("form");
@@ -42,20 +43,7 @@ buttonDiv.addEventListener("click", (event) => {
           location.reload();
         }
       })
-      .catch((error) => {
-        const sectionDiv = document.querySelector("section");
-        const h2El = document.createElement("h2");
-        const imgDiv = document.createElement("div");
-        imgDiv.className = "error-image";
-        h2El.innerText = "Something went wrong";
-        const imgEl = document.createElement("img");
-        imgEl.src = "assets/error.png";
-        imgEl.className = "img-class";
-        sectionDiv.append(imgDiv);
-        imgDiv.append(h2El);
-        imgDiv.append(imgEl);
-        console.log(error);
-      });
+      .catch(displayError);
 });
 
 searchForm.addEventListener("submit", (event) => {
@@ -68,28 +56,17 @@ searchForm.addEventListener("submit", (event) => {
       displayInfo(object);
       searchForm.reset();
     })
-    .catch((error) => {
-      const sectionDiv = document.querySelector("section");
-      const h2El = document.createElement("h2");
-      const imgDiv = document.createElement("div");
-      imgDiv.className = "error-image";
-      h2El.innerText = "something went wrong";
-      const imgEl = document.createElement("img");
-      imgEl.src = "assets/error.png";
-      imgEl.className = "img-class";
-      sectionDiv.append(imgDiv);
-      imgDiv.append(h2El);
-      imgDiv.append(imgEl);
-      console.log(error);
-    });
+    .catch(displayError);
 });
 sideSearchForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const multiSearch = document.querySelector("#multi-search").value;
-  fetchInfo(event.target.id, multiSearch).then((object) => {
-    displayInfo(object);
-    sideSearchForm.reset();
-  });
+  fetchInfo(event.target.id, multiSearch)
+    .then((object) => {
+      displayInfo(object);
+      sideSearchForm.reset();
+    })
+    .catch(displayError);
 });
 
 logoDiv.addEventListener("click", (event) => {

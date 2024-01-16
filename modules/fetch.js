@@ -2,6 +2,8 @@
  *In this module is the function that fetches all the information from The API
  */
 
+import { displayError } from "./display.js";
+
 const BAERER_KEY =
   "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMmEzMGUzMDUxNDk2MzYzMGIzZjBmMTFlNDVjZmZlZiIsInN1YiI6IjY1ODAwNTQ0MGU2NGFmMDgzOWE4NTY2YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.mXFG31A3Gc9TIa9a-tDRXc2PwfYME01u_gmyEt5ipL4";
 
@@ -29,24 +31,23 @@ export async function fetchInfo(typeOfSearch, userChoice, userSearch) {
       Authorization: `Bearer ${BAERER_KEY}`,
     },
   };
+  const response = await fetch(tmdbUrl, options);
+  const data = await response.json();
   const sectionDiv = document.querySelector("section");
   sectionDiv.innerHTML = "";
-  const response = await fetch(tmdbUrl, options);
-  if (response.ok) {
-    const data = await response.json();
-    if (data.results.length == 0) {
-      const sectionDiv = document.querySelector("section");
-      const imgDiv = document.createElement("div");
-      imgDiv.className = "error-image";
-      const h2El = document.createElement("h2");
-      h2El.innerText = "No matches to your search result";
-      const imgEl = document.createElement("img");
-      imgEl.src = "./assets/error.png";
-      imgEl.className = "img-class";
-      sectionDiv.append(imgDiv);
-      imgDiv.append(h2El);
-      imgDiv.append(imgEl);
-    }
+  if (response.ok && data.results.length !== 0) {
     return data;
+  }
+  if (userChoice === "movie" && data.results.length == 0) {
+    throw "Movie Not Found";
+  }
+
+  if (userChoice === "person" && data.results.length == 0) {
+    throw "Actor Not Found";
+  }
+  if (typeOfSearch === "side-form" && data.results.length == 0) {
+    throw "Nothing matches your search";
+  } else {
+    throw 404;
   }
 }
